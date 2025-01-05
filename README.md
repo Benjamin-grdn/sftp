@@ -13,6 +13,23 @@
 
 Easy to use SFTP ([SSH File Transfer Protocol](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)) server with [OpenSSH](https://en.wikipedia.org/wiki/OpenSSH).
 
++ Add cross arch build using BuildX.
+
+# Cross build
+
+```sh
+# Create BuildX env
+docker buildx create --name builder --use
+docker buildx inspect --bootstrap
+
+#
+docker buildx build \
+  --platform linux/amd64,linux/arm/v7,linux/arm64 \
+  -t your-dockerhub-username/your-image-name:tag \
+  --push .
+
+```
+
 # Usage
 
 - Define users in (1) command arguments, (2) `SFTP_USERS` environment variable

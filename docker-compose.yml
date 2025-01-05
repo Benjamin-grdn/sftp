@@ -1,0 +1,10 @@
+services:
+  sftp:
+    image: mysftp:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - BUILDX_OS=linux
+      - BUILDX_ARCH=arm64
+      - BUILDX_PLATFORM=linux/arm64
